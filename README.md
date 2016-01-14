@@ -1,2 +1,2 @@
-# ios-site-wrapper
+# Filtacular
 A base iOS app that wraps a website
