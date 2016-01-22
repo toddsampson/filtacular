@@ -36,4 +36,4 @@ At the command line run the following in the root of the project directory and f
 1. xcodebuild clean
 2. xcodebuild | tee xcodebuild.log
 3. oclint-xcodebuild
-4, oclint-json-compilation-database
+4. oclint-json-compilation-database
