@@ -31,10 +31,14 @@
     UIRefreshControl *refreshController = [UIRefreshControl new];
     NSString *string = @"Pull down to refresh...";
     NSDictionary *attributes = @{ NSForegroundColorAttributeName : whiteColor };
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:attributes];
-    refreshController.bounds = CGRectMake(0, 0, refreshController.bounds.size.width, refreshController.bounds.size.height);
+    NSAttributedString *attributedString = [[NSAttributedString alloc]
+                                            initWithString:string attributes:attributes];
+    refreshController.bounds = CGRectMake(0, 0,
+                                          refreshController.bounds.size.width,
+                                          refreshController.bounds.size.height);
     refreshController.attributedTitle = attributedString;
-    [refreshController addTarget:self action:@selector(refreshWebView:) forControlEvents:UIControlEventValueChanged];
+    [refreshController addTarget:self action:@selector(refreshWebView:)
+                forControlEvents:UIControlEventValueChanged];
     [refreshController setTintColor:whiteColor];
     [self.webView.scrollView addSubview:refreshController];
 }
