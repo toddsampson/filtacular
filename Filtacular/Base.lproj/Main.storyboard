@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Title-->
@@ -20,53 +19,19 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FbH-q5-Oap">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <animations/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="42J-Nf-DPx"/>
-                                </connections>
                             </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMs-59-kJc">
-                                <rect key="frame" x="0.0" y="600" width="600" height="44"/>
-                                <animations/>
-                                <items>
-                                    <barButtonItem image="back" width="30" id="Fcd-l7-ASG">
-                                        <connections>
-                                            <action selector="backButtonAction:" destination="BYZ-38-t0r" id="tXz-jP-Atg"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem image="forward" width="100" id="hoa-aL-7WC">
-                                        <connections>
-                                            <action selector="forwardButtonAction:" destination="BYZ-38-t0r" id="4Jq-3Z-CYK"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="75" systemItem="action" id="wm9-Sm-Pip">
-                                        <connections>
-                                            <action selector="shareButtonAction:" destination="BYZ-38-t0r" id="wU4-X3-abf"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FbH-q5-Oap" secondAttribute="trailing" id="Aer-W0-6o8"/>
                             <constraint firstItem="FbH-q5-Oap" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Epi-qU-pjI"/>
                             <constraint firstItem="FbH-q5-Oap" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="YbE-9i-XAf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dMs-59-kJc" secondAttribute="trailing" constant="-20" id="eWP-Os-e4x"/>
                             <constraint firstItem="FbH-q5-Oap" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="g2i-Lq-PNT"/>
-                            <constraint firstItem="dMs-59-kJc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="tE2-Cf-ObU"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dMs-59-kJc" secondAttribute="bottom" constant="-44" id="xOZ-Az-loT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Fvx-ws-Mh1"/>
                     <connections>
-                        <outlet property="backButtonItem" destination="Fcd-l7-ASG" id="BCu-Wj-8jw"/>
-                        <outlet property="forwardButtonItem" destination="hoa-aL-7WC" id="2K8-lG-U5r"/>
-                        <outlet property="shareButtonItem" destination="wm9-Sm-Pip" id="VdQ-ci-Z6X"/>
-                        <outlet property="toolBar" destination="dMs-59-kJc" id="Tps-YK-vtM"/>
-                        <outlet property="toolBarBottonConstratint" destination="xOZ-Az-loT" id="qvV-3X-1f4"/>
                         <outlet property="webView" destination="FbH-q5-Oap" id="8Pm-iD-myX"/>
                     </connections>
                 </viewController>
@@ -75,8 +40,4 @@
             <point key="canvasLocation" x="400" y="374"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="back" width="12" height="22"/>
-        <image name="forward" width="12" height="22"/>
-    </resources>
 </document>
