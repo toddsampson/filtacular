@@ -10,6 +10,12 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *actionButton;
+
 @end
 
 @implementation ViewController
@@ -46,6 +52,24 @@
 - (void)refreshWebView:(UIRefreshControl*)refreshController{
     [self.webView reload];
     [refreshController endRefreshing];
+}
+
+#pragma mark - Actions
+
+- (IBAction)backButtonTapped:(id)sender {
+    if (self.webView.canGoBack) {
+        [self.webView goBack];
+    }
+}
+
+- (IBAction)forwardButtonTapped:(id)sender {
+    if (self.webView.canGoForward) {
+        [self.webView goForward];
+    }
+}
+
+- (IBAction)actionButtonTapped:(id)sender {
+    
 }
 
 @end
