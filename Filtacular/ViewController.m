@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
@@ -24,6 +24,7 @@
     [super viewDidLoad];
     
     NSURL *url = [NSURL URLWithString:@"http://filtacular.com"];
+    self.webView.delegate = self;
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
     [self addPullToRefreshToWebView];
 }
@@ -52,6 +53,29 @@
 - (void)refreshWebView:(UIRefreshControl*)refreshController{
     [self.webView reload];
     [refreshController endRefreshing];
+}
+
+#pragma mark - UIWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSString *URLString = [[request URL] absoluteString];
+    NSString *referenceString = @"http://filtacular.com";
+    
+    BOOL URLStringContainsReferenceString = !([URLString rangeOfString:referenceString].location == NSNotFound);
+    
+    if (URLStringContainsReferenceString) {
+        self.toolbar.alpha = 0;
+    } else {
+        self.toolbar.alpha = 1;
+    }
+    
+    return YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
 }
 
 #pragma mark - Actions
