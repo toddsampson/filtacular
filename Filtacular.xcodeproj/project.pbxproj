@@ -300,6 +300,7 @@
 				E2309B931C3F6491004E2CFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
