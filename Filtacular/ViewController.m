@@ -26,6 +26,7 @@
     NSURL *url = [NSURL URLWithString:@"http://filtacular.com"];
     self.webView.delegate = self;
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    [self updateButtonsState];
     [self addPullToRefreshToWebView];
 }
 
@@ -73,9 +74,18 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [self updateButtonsState];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
+    [self updateButtonsState];
+}
+
+#pragma mark - Private
+
+- (void)updateButtonsState {
+    self.backButton.enabled = self.webView.canGoBack;
+    self.forwardButton.enabled = self.webView.canGoForward;
 }
 
 #pragma mark - Actions
