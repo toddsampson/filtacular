@@ -8,7 +8,13 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIWebViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *actionButton;
 
 @end
 
@@ -18,7 +24,9 @@
     [super viewDidLoad];
     
     NSURL *url = [NSURL URLWithString:@"http://filtacular.com"];
+    self.webView.delegate = self;
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    [self updateButtonsState];
     [self addPullToRefreshToWebView];
 }
 
@@ -46,6 +54,56 @@
 - (void)refreshWebView:(UIRefreshControl*)refreshController{
     [self.webView reload];
     [refreshController endRefreshing];
+}
+
+#pragma mark - UIWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSString *URLString = [[request URL] absoluteString];
+    NSString *referenceString = @"http://filtacular.com";
+    
+    BOOL URLStringContainsReferenceString = !([URLString rangeOfString:referenceString].location == NSNotFound);
+    
+    if (URLStringContainsReferenceString) {
+        self.toolbar.alpha = 0;
+    } else {
+        self.toolbar.alpha = 1;
+    }
+    
+    return YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [self updateButtonsState];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
+    [self updateButtonsState];
+}
+
+#pragma mark - Private
+
+- (void)updateButtonsState {
+    self.backButton.enabled = self.webView.canGoBack;
+    self.forwardButton.enabled = self.webView.canGoForward;
+}
+
+#pragma mark - Actions
+
+- (IBAction)backButtonTapped:(id)sender {
+    if (self.webView.canGoBack) {
+        [self.webView goBack];
+    }
+}
+
+- (IBAction)forwardButtonTapped:(id)sender {
+    if (self.webView.canGoForward) {
+        [self.webView goForward];
+    }
+}
+
+- (IBAction)actionButtonTapped:(id)sender {
+    
 }
 
 @end

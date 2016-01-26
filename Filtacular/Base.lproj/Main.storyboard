@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -21,17 +21,48 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AXY-iO-YmV">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="XOy-Xy-yVa"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Back" id="ReN-yz-6ku">
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="BYZ-38-t0r" id="BcD-ts-9pl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Forward" id="Lz3-tW-QEO">
+                                        <connections>
+                                            <action selector="forwardButtonTapped:" destination="BYZ-38-t0r" id="gIS-ST-ZNG"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dE2-W0-3Yd"/>
+                                    <barButtonItem systemItem="action" id="zKC-On-5T6">
+                                        <connections>
+                                            <action selector="actionButtonTapped:" destination="BYZ-38-t0r" id="kdz-5z-m31"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="AXY-iO-YmV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1bR-Hb-CBH"/>
                             <constraint firstAttribute="trailing" secondItem="FbH-q5-Oap" secondAttribute="trailing" id="Aer-W0-6o8"/>
+                            <constraint firstAttribute="trailing" secondItem="AXY-iO-YmV" secondAttribute="trailing" id="EhW-2p-Y3E"/>
                             <constraint firstItem="FbH-q5-Oap" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Epi-qU-pjI"/>
                             <constraint firstItem="FbH-q5-Oap" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="YbE-9i-XAf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AXY-iO-YmV" secondAttribute="bottom" id="did-jq-8gt"/>
                             <constraint firstItem="FbH-q5-Oap" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="g2i-Lq-PNT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Fvx-ws-Mh1"/>
                     <connections>
+                        <outlet property="actionButton" destination="zKC-On-5T6" id="ONb-GD-OoX"/>
+                        <outlet property="backButton" destination="ReN-yz-6ku" id="Ycj-s0-zEX"/>
+                        <outlet property="forwardButton" destination="Lz3-tW-QEO" id="mTc-rb-261"/>
+                        <outlet property="toolbar" destination="AXY-iO-YmV" id="YLW-i7-bHH"/>
                         <outlet property="webView" destination="FbH-q5-Oap" id="8Pm-iD-myX"/>
                     </connections>
                 </viewController>
